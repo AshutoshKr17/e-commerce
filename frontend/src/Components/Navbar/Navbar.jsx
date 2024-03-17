@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './Navbar.css'
-
+import AddToCart from  '../AddToCart/AddToCart.jsx';
 import cart_icon from '../Assets/cart_icon.png'
-
 export const Navbar = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
+     
+   
   return (
+   <>
     <div className='navbar'>
          <div className="nav-logo">
             <p>Queen</p>
@@ -17,8 +24,12 @@ export const Navbar = () => {
          </div>   
          <div className="nav-login-cart">
             <button>Login</button>
-            <img src= {cart_icon} alt='cart-icon'></img>
+            <button onClick={togglePopup}><img src= {cart_icon} alt='cart-icon'></img></button>
+            
          </div>
     </div>
+    {isPopupOpen && <AddToCart onClose={() => setIsPopupOpen(false)} />}
+    </>
   )
-}
+};
+export default Navbar;

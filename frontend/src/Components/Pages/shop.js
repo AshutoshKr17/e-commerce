@@ -1,7 +1,11 @@
 import React from 'react';
 import './shop.css';
+import FlashCard from '../FlashCard/FlashCard.jsx';
 export const Shop = () => {
+
+
     // Dummy data for items
+   
     const items = [
         {
             id: 1,
@@ -44,11 +48,119 @@ export const Shop = () => {
             name: 'Item 2',
             price: 30,
             image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
         }
         // Add more items as needed
     ];
 
-    return (
+    return (<>
         <div className="shop-container">
             <h2>Lates Collection</h2>
             <div className="items-container">
@@ -62,5 +174,10 @@ export const Shop = () => {
                 ))}
             </div>
         </div>
+        <div>
+      <h2>FlashCard 1</h2>
+      <FlashCard items={items} />
+    </div>
+        </>
     );
 };
