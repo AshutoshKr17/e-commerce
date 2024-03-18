@@ -1,34 +1,66 @@
 .shop-container {
+    max-width: 1024px; /* Set a maximum container width */
+    margin: 0 auto; /* Center container horizontally */
     padding: 20px;
-}
-
-.items-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust minimum width */
-    gap: 20px;
-    width: 100%; /* Set width to 100% */
-    overflow-x: auto; /* Enable horizontal scrolling */
-    overflow-y: hidden; /* Hide vertical scrollbar */
-    white-space: nowrap; /* Prevent items from wrapping */
-}
-
-.item {
-    border: 1px solid #ccc;
+  }
+  
+  .shop-container h2 {
+    text-align: center; /* Center heading text */
+    margin-bottom: 20px;
+  }
+  
+  .items-container {
+    display: flex;
+    flex-wrap: wrap; /* Wrap items to multiple lines if needed */
+    justify-content: space-between; /* Distribute items evenly */
+    gap: 20px; /* Add space between items */
+  }
+  
+  .item {
+    width: calc(33% - 40px); /* Calculate width based on columns and gap */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
     padding: 10px;
-    text-align: center;
-    width: 300px; /* Set item width */
-    display: inline-block; /* Ensure items stay in a single row */
-}
-
-.item img {
-    width: 100%;
-    max-height: 200px;
-}
-
-.item h3 {
-    margin-top: 10px;
-}
-
-.item p {
-    margin-top: 5px;
-}
+    text-align: center; /* Center content within item */
+  }
+  
+  .item img {
+    width: 100%; /* Fill item width with image */
+    object-fit: cover; /* Maintain aspect ratio and cover area */
+  }
+  
+  .item h3 {
+    margin: 10px 0; /* Add space above and below heading */
+  }
+  
+  .item p {
+    margin-bottom: 10px;
+  }
+  
+  .item button {
+    width: 100%; /* Stretch button across item width */
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .item button:hover {
+    background-color: #222;
+  }
+  
+  /* Media Queries for Responsiveness */
+  
+  @media (max-width: 768px) {
+    .items-container {
+      flex-direction: column; /* Stack items on small screens */
+    }
+    .item {
+      width: 100%; /* Make items full width on small screens */
+    }
+  }
+  
