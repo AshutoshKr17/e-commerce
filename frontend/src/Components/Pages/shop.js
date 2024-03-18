@@ -1,176 +1,15 @@
 import React from 'react';
 import './shop.css';
 import FlashCard from '../FlashCard/FlashCard.jsx';
-export const Shop = () => {
-
+export const Shop = ({items, incrementCartCount}) => {
 
     // Dummy data for items
-   
-    const items = [
-        {
-            id: 7,
-            name: 'Item 1',
-            price: 20,
-            image: 'item1.jpg'
-        },{
-            id: 6,
-            name: 'Item 1',
-            price: 20,
-            image: 'item1.jpg'
-        },{
-            id: 1,
-            name: 'Item 1',
-            price: 20,
-            image: 'item1.jpg'
-        },{
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        }, {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        }, {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        }, {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        }, {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        }, {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        },
-        {
-            id: 2,
-            name: 'Item 2',
-            price: 30,
-            image: 'item2.jpg'
-        }
-        // Add more items as needed
-    ];
+    
+    const addToCart = () => {
+        incrementCartCount(); // Call the incrementCartCount function from useCart hook
+    };
 
-    return (<>
+    return (
         <div className="shop-container">
             <h2>Lates Collection</h2>
             <div className="items-container">
@@ -184,10 +23,5 @@ export const Shop = () => {
                 ))}
             </div>
         </div>
-        <div>
-      <h2>FlashCard 1</h2>
-      <FlashCard items={items} />
-    </div>
-        </>
     );
 };

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Navbar.css'
 import AddToCart from  '../AddToCart/AddToCart.jsx';
 import cart_icon from '../Assets/cart_icon.png'
-export const Navbar = () => {
+export const Navbar = ({cartCount}) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const togglePopup = () => {
@@ -24,8 +24,10 @@ export const Navbar = () => {
          </div>   
          <div className="nav-login-cart">
             <button>Login</button>
-            <button onClick={togglePopup}><img src= {cart_icon} alt='cart-icon'></img></button>
-            
+            <div className="cart-icon-container">
+                <button onClick={togglePopup}><img src= {cart_icon} alt='cart-icon'></img></button>
+                <span className="cart-count">{cartCount}</span>
+            </div>
          </div>
     </div>
     {isPopupOpen && <AddToCart onClose={() => setIsPopupOpen(false)} />}
