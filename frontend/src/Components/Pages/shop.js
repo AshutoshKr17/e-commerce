@@ -1,6 +1,5 @@
 import React from 'react';
 import './shop.css';
-import FlashCard from '../FlashCard/FlashCard.jsx';
 export const Shop = ({items, incrementCartCount}) => {
 
     // Dummy data for items
@@ -17,7 +16,7 @@ export const Shop = ({items, incrementCartCount}) => {
                     <div key={item.id} className="item">
                         <img src={item.image} alt={item.name}/>
                         <h3>{item.name}</h3>
-                        <p>₹{item.price}</p>
+                        <p>₹{item.new_price}</p>
                         <button onClick={addToCart}>Add to Cart</button>
                     </div>
                 ))}
