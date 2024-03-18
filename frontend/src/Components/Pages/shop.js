@@ -1,11 +1,11 @@
 import React from 'react';
 import './shop.css';
-import { useCart } from '../cartUtils'; // Import useCart hook
+import FlashCard from '../FlashCard/FlashCard.jsx';
+export const Shop = () => {
 
-export const Shop = ({incrementCartCount}) => {
-    // const { incrementCartCount } = useCart(); // Use the useCart hook to access incrementCartCount function
 
     // Dummy data for items
+   
     const items = [
         {
             id: 7,
@@ -24,28 +24,153 @@ export const Shop = ({incrementCartCount}) => {
             image: 'item1.jpg'
         },{
             id: 2,
-            name: 'Item 1',
-            price: 20,
-            image: 'item1.jpg'
-        },{
-            id: 3,
-            name: 'Item 1',
-            price: 20,
-            image: 'item1.jpg'
-        },{
-            id: 4,
-            name: 'Item 1',
-            price: 20,
-            image: 'item1.jpg'
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        }, {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        }, {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        }, {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        }, {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        }, {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
+        },
+        {
+            id: 2,
+            name: 'Item 2',
+            price: 30,
+            image: 'item2.jpg'
         }
-        // Other items omitted for brevity
+        // Add more items as needed
     ];
 
-    const addToCart = () => {
-        incrementCartCount(); // Call the incrementCartCount function from useCart hook
-    };
-
-    return (
+    return (<>
         <div className="shop-container">
             <h2>Lates Collection</h2>
             <div className="items-container">
@@ -59,5 +184,10 @@ export const Shop = ({incrementCartCount}) => {
                 ))}
             </div>
         </div>
+        <div>
+      <h2>FlashCard 1</h2>
+      <FlashCard items={items} />
+    </div>
+        </>
     );
 };

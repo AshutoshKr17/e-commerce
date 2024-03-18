@@ -1,26 +1,35 @@
-import React from 'react';
-import './Navbar.css';
-import cart_icon from '../Assets/cart_icon.png';
+import React, { useState } from 'react';
+import './Navbar.css'
+import AddToCart from  '../AddToCart/AddToCart.jsx';
+import cart_icon from '../Assets/cart_icon.png'
+export const Navbar = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-export const Navbar = ({ cartCount }) => {
-    return (
-        <div className='navbar'>
-            <div className="nav-logo">
-                <p>Queen</p>
-            </div>
-            <div className="nav-menu">
-                <ul>
-                    <li>Shop<hr/></li>
-                    <li>Women</li>
-                </ul>
-            </div>
-            <div className="nav-login-cart">
-                <button>Login</button>
-                <div className="cart-icon-container">
-                    <img src={cart_icon} alt='cart-icon'/>
-                    <span className="cart-count">{cartCount}</span>
-                </div>
-            </div>
-        </div>
-    );
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
+     
+   
+  return (
+   <>
+    <div className='navbar'>
+         <div className="nav-logo">
+            <p>Queen</p>
+         </div>
+         <div className="nav-menu">
+            <ul>
+                <li>Shop<hr/></li>
+                <li>Women</li>
+            </ul>
+         </div>   
+         <div className="nav-login-cart">
+            <button>Login</button>
+            <button onClick={togglePopup}><img src= {cart_icon} alt='cart-icon'></img></button>
+            
+         </div>
+    </div>
+    {isPopupOpen && <AddToCart onClose={() => setIsPopupOpen(false)} />}
+    </>
+  )
 };
+export default Navbar;
