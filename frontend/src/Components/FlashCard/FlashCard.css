@@ -1,55 +1,67 @@
 .card {
-    display: flex;
-
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .card-item {
-    margin-bottom: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-    width:auto;
-    padding: 10px;
-  }
-
-  .scrolling-wrapper {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    
-    
-  }
-  
-  .scrolling-wrapper-flexbox {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    
-    .card {
-      flex: 0 0 auto;
-      margin-right: 3px;
-    }
-  }
-  
-  .scrolling-wrapper, .scrolling-wrapper-flexbox {
-    height: 205px;
-    margin-bottom: 20px;
-    width: 100%;
-    -webkit-overflow-scrolling: touch;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-  #drag {
-    cursor: move; 
-    cursor: grab;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
+  display: flex;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 172%;
 }
+
+.card-item {
+  margin-bottom: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-item img {
+  max-width: 100%;
+  height: auto;
+}
+.card-item h3 {
+  white-space: wrap;
+}
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  text-align: center;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+#drag {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  width:100%;
+}
+
 #drag:active {
-    cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+
+
+.card-item button {
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-item button:hover {
+  background-color: #555; /* Change to a darker shade on hover */
 }

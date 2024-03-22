@@ -81,6 +81,14 @@ const items = [
       image: simran9,
       new_price: 85.0,
       old_price: 120.5,
+    },
+    {
+      id: 10,
+      name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+      category: "women",
+      image: simran9,
+      new_price: 85.0,
+      old_price: 120.5,
     }
 ]
 
