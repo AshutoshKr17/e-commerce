@@ -1,60 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function AddToCart({ onClose, cartItems}) {
-  // This state controls whether the popup is visible
+function Cart({ onClose, cartItems }) {
   const [isOpen, setIsOpen] = useState(true);
-  
-  
-  // Function to toggle the popup visibility
-  const toggleLocalPopup = () => {
-    setIsOpen(!isOpen);
-    cartItems.forEach(item => {
-      console.log("AddToCart:");
-      console.log(item.id,item.name);
-          });
-    onClose(); // Call the onClose function provided by the parent component
 
+  // Close the popup when cartItems change
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      onClose();
+    }
+  }, [cartItems, onClose]);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    onClose();
   };
 
-
+  const handlePlaceOrder = () => {
+    // Handle placing order logic
+  };
 
   return (
     <div>
-      {/* Popup UI - shown based on the `isOpen` state */}
       {isOpen && (
-        <div style={{
-          position: 'fixed',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 1000,
-          backgroundColor: 'white',
-          padding: '20px',
-          borderRadius: '5px',
-          boxShadow: '0 0 10px rgba(0, 0, 0, 0.25)'
-        }}>
-          
-          <h2>Popup Title</h2>
-          <p>This is a simple popup!</p>
-          <button> Place Order</button>
-          <button onClick={toggleLocalPopup}>Close</button>
+        <div className='popup'>
+          <h2>Shopping Cart</h2>
+          {cartItems.map(item => (
+            <div key={item.id}>
+              <p>{item.name}</p>
+              <p>${item.price}</p>
+            </div>
+          ))}
+          <button onClick={handlePlaceOrder}>Place Order</button>
+          <button onClick={handleClose}>Close</button>
         </div>
       )}
-
-      {/* Optional: Overlay to darken the background when the popup is visible */}
-      {isOpen && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          zIndex: 999
-        }} onClick={toggleLocalPopup}></div>
-      )}
+      {isOpen && <div className='popupclosed' onClick={handleClose}></div>}
     </div>
   );
 }
 
-export default AddToCart;
+export default Cart;

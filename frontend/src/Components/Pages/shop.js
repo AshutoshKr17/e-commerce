@@ -10,7 +10,7 @@ export const Shop = ({ items, addToCart }) => { // Pass addToCart function as pr
             <div className="items-container">
                 {items.map(item => (
                     <div key={item.id} className="item">
-                        <img src={item.image} alt={item.name}/>
+                        <img src={item.image} alt={item.name} />
                         <h3>{item.name}</h3>
                         <p>₹{item.new_price}</p>
                         <button onClick={() => addToCart(item)}>Add to Cart</button> {/* Call addToCart function */}
