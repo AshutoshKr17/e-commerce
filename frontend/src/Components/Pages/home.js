@@ -9,12 +9,12 @@ import { useCart } from '../cartUtils'; // Import useCart hook
 import items from '../Assets/current';
 
 function Home() {
-    
-    const { cartCount, addToCart,cartItems } = useCart(); // Destructure cartCount and addToCart from useCart hook
+
+    const { cartCount, addToCart, cartItems } = useCart(); // Destructure cartCount and addToCart from useCart hook
 
     return (
         <div>
-            <Navbar cartCount={cartCount} cartItems={cartItems}/> {/* Pass cartCount as prop */}
+            <Navbar cartCount={cartCount} cartItems={cartItems} /> {/* Pass cartCount as prop */}
             <Shop items={items} addToCart={addToCart} /> {/* Pass addToCart as prop */}
             <div className='header'>Trending</div>
             <FlashCard items={items} ></FlashCard>
