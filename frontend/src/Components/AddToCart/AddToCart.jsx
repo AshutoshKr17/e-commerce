@@ -28,7 +28,7 @@ function Cart({ onClose, cartItems }) {
           {cartItems.map(item => (
             <div key={item.id}>
               <p>{item.name}</p>
-              <p>${item.price}</p>
+              <p>${item.new_price}</p>
             </div>
           ))}
           <button onClick={handlePlaceOrder}>Place Order</button>
