@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Cart({ onClose, cartItems }) {
   const [isOpen, setIsOpen] = useState(true);
-
+  const navigate = useNavigate();
   // Close the popup when cartItems change
   useEffect(() => {
     if (cartItems.length === 0) {
@@ -16,7 +17,7 @@ function Cart({ onClose, cartItems }) {
   };
 
   const handlePlaceOrder = () => {
-    // Handle placing order logic
+    navigate('/placeorder');
   };
 
   return (
