@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './Navbar.css'
+
 import AddToCart from  '../AddToCart/AddToCart.jsx';
 import cart_icon from '../Assets/cart_icon.png'
-export const Navbar = ({cartCount}) => {
+export const Navbar = ({cartCount,cartItems}) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const togglePopup = () => {
@@ -30,7 +31,7 @@ export const Navbar = ({cartCount}) => {
             </div>
          </div>
     </div>
-    {isPopupOpen && <AddToCart onClose={() => setIsPopupOpen(false)} />}
+    {isPopupOpen && <AddToCart onClose={() => setIsPopupOpen(false)} cartItems={cartItems} />}
     </>
   )
 };

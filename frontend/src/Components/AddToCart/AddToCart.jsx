@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 
-function AddToCart({ onClose }) {
+function AddToCart({ onClose, cartItems}) {
   // This state controls whether the popup is visible
   const [isOpen, setIsOpen] = useState(true);
-
+  
+  
   // Function to toggle the popup visibility
   const toggleLocalPopup = () => {
     setIsOpen(!isOpen);
+    cartItems.forEach(item => {
+      console.log("AddToCart:");
+      console.log(item.id,item.name);
+          });
     onClose(); // Call the onClose function provided by the parent component
+
   };
 
 
@@ -27,6 +33,7 @@ function AddToCart({ onClose }) {
           borderRadius: '5px',
           boxShadow: '0 0 10px rgba(0, 0, 0, 0.25)'
         }}>
+          
           <h2>Popup Title</h2>
           <p>This is a simple popup!</p>
           <button> Place Order</button>
