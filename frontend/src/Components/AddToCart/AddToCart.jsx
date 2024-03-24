@@ -10,6 +10,8 @@ function AddToCart({ onClose }) {
     onClose(); // Call the onClose function provided by the parent component
   };
 
+
+
   return (
     <div>
       {/* Popup UI - shown based on the `isOpen` state */}
@@ -27,6 +29,7 @@ function AddToCart({ onClose }) {
         }}>
           <h2>Popup Title</h2>
           <p>This is a simple popup!</p>
+          <button> Place Order</button>
           <button onClick={toggleLocalPopup}>Close</button>
         </div>
       )}
