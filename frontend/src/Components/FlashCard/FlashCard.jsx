@@ -1,6 +1,6 @@
   import React, { useRef } from 'react';
   import './FlashCard.css';
-  const FlashCard = ({ items ,incrementCartCount}) => {
+  const FlashCard = ({ items }) => {
       const sliderRef = useRef(null);
     let mouseDown = false;
     let startX, scrollLeft;
@@ -26,7 +26,7 @@
     };
     const addToCart = (itemId) => {
       // Handle adding item to cart here
-      incrementCartCount();
+      
       console.log("Item added to cart:", itemId);
     };
 
