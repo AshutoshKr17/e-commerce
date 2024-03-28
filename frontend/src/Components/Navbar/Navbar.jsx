@@ -3,13 +3,19 @@ import './Navbar.css'
 
 import Cart from '../AddToCart/AddToCart.jsx';
 import cart_icon from '../Assets/cart_icon.png'
+import { Navigate, useNavigate } from 'react-router-dom';
 export const Navbar = ({ cartCount, cartItems }) => {
+   const navigate = useNavigate();
    const [isPopupOpen, setIsPopupOpen] = useState(false);
 
    const togglePopup = () => {
       setIsPopupOpen(!isPopupOpen);
    };
 
+   const loginHandler = (event) => {
+      navigate('/login')
+      console.log("Hello world");
+   }
 
    return (
       <>
@@ -24,7 +30,7 @@ export const Navbar = ({ cartCount, cartItems }) => {
                </ul>
             </div>
             <div className="nav-login-cart">
-               <button>Login</button>
+               <button onClick={loginHandler}>Login</button>
                <div className="cart-icon-container">
                   <button onClick={togglePopup}><img src={cart_icon} alt='cart-icon'></img></button>
                   <span className="cart-count">{cartCount}</span>
