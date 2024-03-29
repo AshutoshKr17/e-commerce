@@ -14,13 +14,13 @@ export default function login() {
         event.preventDefault();
         try {
             const response = await axios.post('/login', data);
-
+            localStorage.setItem('token', response.data.token);
             console.log(response.data); // Handle the response data as needed
             if (response.status == 200) {
                 navigate('/')
             }
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Error:', error.response.data);
         }
     }
     const clickHandler = () => {
