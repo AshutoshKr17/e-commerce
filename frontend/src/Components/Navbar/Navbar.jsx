@@ -4,9 +4,13 @@ import './Navbar.css'
 import Cart from '../AddToCart/AddToCart.jsx';
 import cart_icon from '../Assets/cart_icon.png'
 import { Navigate, useNavigate } from 'react-router-dom';
+
+
 export const Navbar = ({ cartCount, cartItems }) => {
    const navigate = useNavigate();
    const [isPopupOpen, setIsPopupOpen] = useState(false);
+   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+   const [userName, setUsername] = useState('');
 
    const togglePopup = () => {
       setIsPopupOpen(!isPopupOpen);
@@ -14,11 +18,13 @@ export const Navbar = ({ cartCount, cartItems }) => {
 
    const loginHandler = (event) => {
       navigate('/login')
-      console.log("Hello world");
    }
-
+   const logoutHandler = () => {
+      setIsLoggedIn(false);
+      setUsername('');
+   }
    return (
-      <>
+      <div>
          <div className='navbar'>
             <div className="nav-logo">
                <p>Queen</p>
@@ -29,8 +35,16 @@ export const Navbar = ({ cartCount, cartItems }) => {
                   <li>Women</li>
                </ul>
             </div>
+
             <div className="nav-login-cart">
-               <button onClick={loginHandler}>Login</button>
+               {isLoggedIn ? (
+                  <div>
+                     <span>Welcome {userName}!</span>
+                     <button onClick={logoutHandler}>Logout</button>
+                  </div>
+               ) : (
+                  <button onClick={loginHandler}>Login</button>
+               )}
                <div className="cart-icon-container">
                   <button onClick={togglePopup}><img src={cart_icon} alt='cart-icon'></img></button>
                   <span className="cart-count">{cartCount}</span>
@@ -38,7 +52,7 @@ export const Navbar = ({ cartCount, cartItems }) => {
             </div>
          </div>
          {isPopupOpen && <Cart onClose={() => setIsPopupOpen(false)} cartItems={cartItems} />}
-      </>
+      </div>
    )
 };
 export default Navbar;
