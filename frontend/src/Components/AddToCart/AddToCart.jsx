@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './AddToCart.css';
+import { useNavigate } from 'react-router-dom';
 function Cart({ onClose, cartItems }) {
   const [isOpen, setIsOpen] = useState(true);
-
+  const navigate = useNavigate();
   // Close the popup when cartItems change
   useEffect(() => {
     if (cartItems.length === 0) {
@@ -16,7 +16,7 @@ function Cart({ onClose, cartItems }) {
   };
 
   const handlePlaceOrder = () => {
-    // Handle placing order logic
+    navigate('/placeorder');
   };
 
   return (
@@ -29,7 +29,7 @@ function Cart({ onClose, cartItems }) {
             <div key={item.id}>
               <p>{item.name}</p>
               <img src={item.image} alt={item.name} />
-              <p>${item.old_price}</p>
+              <p>${item.price}</p>
             </div>
           ))}
           
