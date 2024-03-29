@@ -21,6 +21,7 @@ export const Navbar = ({ cartCount, cartItems }) => {
    }
    const logoutHandler = () => {
       setIsLoggedIn(false);
+      localStorage.removeItem('token');
       setUsername('');
    }
    return (
