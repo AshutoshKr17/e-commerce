@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './AddToCart.css';
 function Cart({ onClose, cartItems }) {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
@@ -26,11 +27,15 @@ function Cart({ onClose, cartItems }) {
           <h2>Shopping Cart</h2>
             
           {cartItems.map(item => (
+            <>
             <div key={item.id}>
               <p>{item.name}</p>
               <img src={item.image} alt={item.name} />
-              <p>${item.price}</p>
+              <p>${item.new_price}</p>
             </div>
+            <div class="popup-divider"></div>
+            </>
+            
           ))}
           
           <button onClick={handlePlaceOrder}>Place Order</button>

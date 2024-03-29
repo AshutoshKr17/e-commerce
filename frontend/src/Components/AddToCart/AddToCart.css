@@ -1,16 +1,31 @@
-.popup {
-   
+/* .popup {
+    overflow-y:auto;
     position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
   background-color: white;
-  padding: 40px; /* Increased padding to increase size */
+  padding: 40px; 
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-  width: 400px; /* Increased width */
-  max-width: 80%; /* Optional: Limit maximum width */
+  width: 400px; 
+  max-width: 80%;
+} */
+.popup {
+    overflow-y: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+    padding: 40px; /* Increased padding to increase size */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    width: 400px; /* Increased width */
+    max-width: 80%; /* Optional: Limit maximum width */
+    max-height: 80%; /* Set maximum height for scrolling */
 }
 .popup img{
     max-width: 70%;
@@ -26,4 +41,8 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
+}
+.popup-divider {
+    border-bottom: 1px solid #ccc; /* Horizontal line */
+    margin-bottom: 20px; /* Adjust margin as needed */
 }
