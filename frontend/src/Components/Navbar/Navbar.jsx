@@ -6,7 +6,7 @@ import cart_icon from '../Assets/cart_icon.png'
 import { Navigate, useNavigate } from 'react-router-dom';
 
 
-export const Navbar = ({ cartCount, cartItems }) => {
+export const Navbar = ({ cartCount, cartItems, removeFromCart }) => {
    const navigate = useNavigate();
    const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -54,7 +54,7 @@ export const Navbar = ({ cartCount, cartItems }) => {
                </div>
             </div>
          </div>
-         {isPopupOpen && <Cart onClose={() => setIsPopupOpen(false)} cartItems={cartItems} isLoggedin={isLoggedIn} />}
+         {isPopupOpen && <Cart onClose={() => setIsPopupOpen(false)} cartItems={cartItems} isLoggedin={isLoggedIn} removeFromCart={removeFromCart} />}
       </div>
    )
 };

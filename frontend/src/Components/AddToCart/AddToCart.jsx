@@ -3,16 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import './AddToCart.css';
 import toast from 'react-hot-toast';
 
-
-function Cart({ onClose, cartItems, isLoggedin }) {
+function Cart({ onClose, cartItems, isLoggedIn, removeFromCart }) {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
-  // Close the popup when cartItems change
-  useEffect(() => {
-    if (cartItems.length === 0) {
-      onClose();
-    }
-  }, [cartItems, onClose]);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -20,10 +13,11 @@ function Cart({ onClose, cartItems, isLoggedin }) {
   };
 
   const handlePlaceOrder = () => {
-    if (!isLoggedin)
-      toast.error('Please login First !')
-    else
+    if (!isLoggedIn) {
+      toast.error('Please login first!');
+    } else {
       navigate('/placeorder');
+    }
   };
 
   return (
@@ -31,21 +25,22 @@ function Cart({ onClose, cartItems, isLoggedin }) {
       {isOpen && (
         <div className="popup">
           <h2>Shopping Cart</h2>
-
           {cartItems.map(item => (
-            <>
-              <div key={item.id}>
-                <p>{item.name}</p>
-                <img src={item.image} alt={item.name} />
-                <p>${item.new_price}</p>
-              </div>
-              <div class="popup-divider"></div>
-            </>
-
+            <div key={item.id}>
+              <p>{item.name}</p>
+              <img src={item.image} alt={item.name} />
+              <p>${item.new_price}</p>
+              <button onClick={() => removeFromCart(item.id)}>Remove</button>
+              <div className="popup-divider"></div>
+            </div>
           ))}
-
-          <button onClick={handlePlaceOrder}>Place Order</button>
-          <button onClick={handleClose}>Close</button>
+          {cartItems.length === 0 && <p>No items in the cart</p>}
+          {cartItems.length > 0 && (
+            <>
+              <button onClick={handlePlaceOrder}>Place Order</button>
+              <button onClick={handleClose}>Close</button>
+            </>
+          )}
         </div>
       )}
       {isOpen && <div className="popupclosed" onClick={handleClose}></div>}
@@ -54,3 +49,4 @@ function Cart({ onClose, cartItems, isLoggedin }) {
 }
 
 export default Cart;
+
