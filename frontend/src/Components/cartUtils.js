@@ -9,7 +9,6 @@ export const useCart = () => {
     //     console.log("Count:",cartCount);
     // };
 
-    //need to fix cartcount
     const addToCart = (item) => {
         setCartItems([...cartItems, item]);
         setCartCount(cartItems.length + 1);
@@ -18,6 +17,7 @@ export const useCart = () => {
         cartItems.forEach(item => {
             console.log(item.id, item.name);
         });
+
     };
 
     return {
