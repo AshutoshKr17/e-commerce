@@ -1,9 +1,8 @@
-/* login.css */
 form {
     display: flex;
     flex-direction: column;
     width: 300px;
-    margin: 0 auto;
+    margin: 10% auto;
 }
 
 input {
@@ -17,6 +16,7 @@ button {
     background-color: #007bff;
     color: #fff;
     border: none;
+    margin-bottom: 10px;
     cursor: pointer;
     font-size: 16px;
 }
@@ -28,6 +28,7 @@ button:hover {
 #text {
     display: flex;
     align-items: center;
+    text-align: center;
     flex-direction: column;
     margin-top: 10px;
     cursor: pointer;

@@ -35,8 +35,9 @@ export default function login() {
                 <label htmlFor="password">Password:</label>
                 <input type="password" value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })} />
                 <button type='submit'>login</button>
+                <div id="text" onClick={clickHandler}> Not a registered User ? seriously :wink: ? click here bitch ! </div>
             </form>
-            <div id="text" onClick={clickHandler}> Not a registered User ? seriously :wink: ? click here bitch ! </div>
+
         </div>
     )
 }

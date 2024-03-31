@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import axios for making HTTP requests
 import { useNavigate } from 'react-router-dom';
+import './register.css'
 
 export default function Register() {
     const [data,
@@ -21,7 +22,9 @@ export default function Register() {
             console.error('Error:', error.response.data);
         }
     };
-
+    const loginRed = () => {
+        navigate('/login');
+    }
     const handleChange = (e) => {
         setData({
             ...data,
@@ -60,7 +63,9 @@ export default function Register() {
                     onChange={handleChange} />
 
                 <button type='submit'>Register</button>
+                <button id='loginRed' onClick={loginRed}>Login</button>
             </form>
+
         </div>
     );
 }
