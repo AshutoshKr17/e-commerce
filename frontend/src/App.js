@@ -8,13 +8,15 @@ import Payment from './Components/Pages/paymentGateway'
 import Login from './Components/Pages/login';
 import axios from 'axios';
 import Register from './Components/Pages/register';
-
+import { Toaster } from 'react-hot-toast';
 axios.defaults.baseURL = 'http://localhost:8000';
 axios.defaults.withCredentials = true;
 
 export default function App() {
     return (
         // <div> Hello app js</div>
+        <>
+        <Toaster position='bottom-right' toastOptions={{duration:2000}}/>
         <Router>
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -24,5 +26,6 @@ export default function App() {
                 <Route path='/register' element={<Register />} />
             </Routes>
         </Router>
+        </>
     )
 };
