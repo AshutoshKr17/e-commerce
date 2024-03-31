@@ -10,7 +10,7 @@ export const Navbar = ({ cartCount, cartItems }) => {
    const navigate = useNavigate();
    const [isPopupOpen, setIsPopupOpen] = useState(false);
    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
-   const [userName, setUsername] = useState('');
+   const [userName, setUsername] = useState(localStorage.getItem('username'));
 
    const togglePopup = () => {
       setIsPopupOpen(!isPopupOpen);

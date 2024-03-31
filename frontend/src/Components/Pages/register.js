@@ -26,6 +26,7 @@ export default function Register() {
             // }
            
         } catch (error) {
+
             console.error('Error:', error.response.data);
         }
     };
@@ -40,7 +41,7 @@ export default function Register() {
     return (
         <div>
             <form onSubmit={submitHandler}>
-                <label htmlFor="name">Enter Your User Name:</label>
+                <label htmlFor="name">User Name:</label>
                 <input
                     type='text'
                     id='username'

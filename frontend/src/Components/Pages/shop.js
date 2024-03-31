@@ -2,7 +2,6 @@ import React from 'react';
 import './shop.css';
 
 export const Shop = ({ items, addToCart }) => { // Pass addToCart function as prop
-    // Dummy data for items
 
     return (
         <div className="shop-container">
