@@ -10,10 +10,10 @@ export default function Register() {
 
     const submitHandler = async (event) => {
         event.preventDefault();
-        console.log(data);
+        // console.log(data);
         try {
             const response = await axios.post('/register', data);
-            console.log(response.data);
+            // console.log(response.data);
             if (response.data.error) {
                 toast.error(response.data.error);
             }
@@ -27,7 +27,6 @@ export default function Register() {
             // }
 
         } catch (error) {
-
             console.error('Error:', error.response.data);
         }
     };

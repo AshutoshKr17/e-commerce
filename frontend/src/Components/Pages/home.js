@@ -9,9 +9,7 @@ import { useCart } from '../cartUtils'; // Import useCart hook
 import items from '../Assets/current';
 
 function Home() {
-
     const { cartCount, addToCart, cartItems } = useCart(); // Destructure cartCount and addToCart from useCart hook
-
     return (
         <div>
             <Navbar cartCount={cartCount} cartItems={cartItems} /> {/* Pass cartCount as prop */}

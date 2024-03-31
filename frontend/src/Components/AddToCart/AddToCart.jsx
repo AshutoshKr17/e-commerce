@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AddToCart.css';
-function Cart({ onClose, cartItems }) {
+import toast from 'react-hot-toast';
+
+
+function Cart({ onClose, cartItems, isLoggedin }) {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
   // Close the popup when cartItems change
@@ -17,7 +20,10 @@ function Cart({ onClose, cartItems }) {
   };
 
   const handlePlaceOrder = () => {
-    navigate('/placeorder');
+    if (!isLoggedin)
+      toast.error('Please login First !')
+    else
+      navigate('/placeorder');
   };
 
   return (
@@ -25,19 +31,19 @@ function Cart({ onClose, cartItems }) {
       {isOpen && (
         <div className="popup">
           <h2>Shopping Cart</h2>
-            
+
           {cartItems.map(item => (
             <>
-            <div key={item.id}>
-              <p>{item.name}</p>
-              <img src={item.image} alt={item.name} />
-              <p>${item.new_price}</p>
-            </div>
-            <div class="popup-divider"></div>
+              <div key={item.id}>
+                <p>{item.name}</p>
+                <img src={item.image} alt={item.name} />
+                <p>${item.new_price}</p>
+              </div>
+              <div class="popup-divider"></div>
             </>
-            
+
           ))}
-          
+
           <button onClick={handlePlaceOrder}>Place Order</button>
           <button onClick={handleClose}>Close</button>
         </div>

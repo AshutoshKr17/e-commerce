@@ -9,8 +9,10 @@ import { Navigate, useNavigate } from 'react-router-dom';
 export const Navbar = ({ cartCount, cartItems }) => {
    const navigate = useNavigate();
    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
    const [userName, setUsername] = useState(localStorage.getItem('username'));
+
 
    const togglePopup = () => {
       setIsPopupOpen(!isPopupOpen);
@@ -28,7 +30,7 @@ export const Navbar = ({ cartCount, cartItems }) => {
       <div>
          <div className='navbar'>
             <div className="nav-logo">
-               <p>Queen</p>
+               <p>MOONSTONE</p>
             </div>
             <div className="nav-menu">
                <ul>
@@ -52,8 +54,8 @@ export const Navbar = ({ cartCount, cartItems }) => {
                </div>
             </div>
          </div>
-         {isPopupOpen && <Cart onClose={() => setIsPopupOpen(false)} cartItems={cartItems} />}
+         {isPopupOpen && <Cart onClose={() => setIsPopupOpen(false)} cartItems={cartItems} isLoggedin={isLoggedIn} />}
       </div>
    )
 };
-export default Navbar;
+export default { Navbar };

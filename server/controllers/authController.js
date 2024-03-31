@@ -10,26 +10,26 @@ const test = (req, res) => {
 
 const registerUser = async (req, res) => {
     try {
-        const {username,email,password} =req.body;
+        const { username, email, password } = req.body;
         //valid name
-        if(!username){
+        if (!username) {
             return res.json({
                 error: 'Name is required'
             });
         }
         //valid passsword
-        if(!password || password.length < 6){
+        if (!password || password.length < 6) {
             return res.json({
-                error: !password?'Password is required' : 'Password must be atleast 6 characters long'
+                error: !password ? 'Password is required' : 'Password must be atleast 6 characters long'
             });
         }
         // Hash the password
 
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
-            
+
         const validEmail = await User.findOne({ email: req.body.email });
         if (validEmail) {
-            return res.status(404).json({ error: 'User already exist' });
+            return res.json({ error: 'User already exist' }).status(404);
         }
         // Create a new user
         const user = new User({
