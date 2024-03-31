@@ -2,6 +2,7 @@ import { React, useState } from 'react'
 import './login.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import {toast} from 'react-hot-toast';
 
 export default function login() {
     const [data, setData] = useState({
@@ -16,7 +17,15 @@ export default function login() {
             const response = await axios.post('/login', data);
             localStorage.setItem('token', response.data.token);
             console.log(response.data); // Handle the response data as needed
-            if (response.status == 200) {
+            // if (response.status == 200) {
+            //     navigate('/')
+            // }
+            if(response.data.error){
+                toast.error(response.data.error);
+            }
+            else{
+                setData({});
+                toast.success('Login Successful. Welcome!');
                 navigate('/')
             }
         } catch (error) {
