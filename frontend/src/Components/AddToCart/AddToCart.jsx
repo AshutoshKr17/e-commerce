@@ -13,9 +13,11 @@ function Cart({ onClose, cartItems, isLoggedIn, removeFromCart, handleIncreaseQu
   };
 
   const handlePlaceOrder = () => {
+    console.log(isLoggedIn);
     if (!isLoggedIn) {
       toast.error('Please login first!');
     } else {
+      localStorage.setItem('cartItems', cartItems);
       navigate('/placeorder');
     }
   };
@@ -41,10 +43,10 @@ function Cart({ onClose, cartItems, isLoggedIn, removeFromCart, handleIncreaseQu
           ))}
           {cartItems.length === 0 && <p>No items in the cart</p>}
           {cartItems.length > 0 && (
-            <>
-              <button onClick={handlePlaceOrder}>Place Order</button>
-              <button onClick={handleClose}>Close</button>
-            </>
+            <div>
+              <button className='placeorderbtn' onClick={handlePlaceOrder}>Place Order</button>
+              <button className='closebtn' onClick={handleClose}>Close</button>
+            </div>
           )}
         </div>
       )}
