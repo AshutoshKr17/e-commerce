@@ -1,35 +1,116 @@
-import React from 'react';
-import './placeOrder.css'
+import React, { useState, useEffect } from 'react';
+import './placeOrder.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function PlaceOrder() {
     const navigate = useNavigate();
-    const submitHandler = (event) => {
-        event.preventDefault(); // Prevent the default form submission behavior
-        // Add your submission logic here
-        // For example, you can access form data using event.target
-        const formData = new FormData(event.target);
-        const name = formData.get('name');
-        const password = formData.get('password');
-        const address = formData.get('address');
-        const mobileNumber = formData.get('mobileNo');
-        console.log('Form Data:', { name, password, address, mobileNumber });
-        navigate('/payment')
+    const [addresses,
+        setAddresses] = useState([]);
+    const [showPopup,
+        setShowPopup] = useState(false);
+    const [newAddress,
+        setNewAddress] = useState('');
+    const [newMobile,
+        setNewMobile] = useState('');
+    const [error,
+        setError] = useState(null);
+
+    useEffect(() => {
+        // Fetch addresses when component mounts
+        fetchAddresses();
+    }, []);
+
+    const submitHandler = () => {
+        navigate('/payment');
+    };
+
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
+
+    const handleAddAddress = async () => {
+        try {
+            // Call your backend API to add address
+            const response = await axios.post('/addAddress', {
+                token: localStorage.getItem('token'),
+                address: newAddress,
+                mobile: newMobile
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.status >= 200 && response.status < 300) {
+                // Update UI optimistically
+                setAddresses([
+                    ...addresses, {
+                        address: newAddress,
+                        mobile: newMobile
+                    }
+                ]);
+                // Clear input fields
+                setNewAddress('');
+                setNewMobile('');
+                // Close the popup
+                togglePopup();
+            } else {
+                throw new Error('Failed to add address');
+            }
+        } catch (error) {
+            setError('Failed to add address');
+        }
+    };
+
+    const fetchAddresses = async () => {
+        try {
+            // Call your backend API to fetch addresses
+            const response = await axios.get('/fetchAddresses', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+            setAddresses(response.data);
+        } catch (error) {
+            console.log('Failed to fetch addresses');
+        }
     };
 
     return (
-        <div>
-            <form className='userDetails' onSubmit={submitHandler}>
-                <label>Name:</label>
-                <input name='name' className='name' placeholder='Enter Name' required />
-                <label>Password:</label>
-                <input name='password' className='password' type='password' placeholder='Please enter your password' required />
-                <label>Address:</label>
-                <input name='address' className='address' placeholder='Please enter Address' required />
-                <label>Mobile Number:</label>
-                <input name='mobileNo' className='mobileNo' placeholder='Please enter your mobile number' required />
-                <button type='submit'>PlaceOrder</button>
-            </form>
+        <div className="container">
+            <div className="content">
+                <div>Addresses:</div>
+                <ul>
+                    {addresses.map((addressObj, index) => (
+                        <li key={index}>
+                            Address: {addressObj.address}, Mobile: {addressObj.mobile}
+                        </li>
+                    ))}
+                </ul>
+                <button onClick={togglePopup}>Add Address</button>
+                <button onClick={submitHandler}>Place Order</button>
+                {error && <div className="error">{error}</div>}
+            </div>
+            {showPopup && (
+                <div className="popup">
+                    <div className="popup-inner">
+                        <h2>Add Address</h2>
+                        <input
+                            type="text"
+                            placeholder="Address"
+                            value={newAddress}
+                            onChange={(e) => setNewAddress(e.target.value)} />
+                        <input
+                            type="text"
+                            placeholder="Mobile"
+                            value={newMobile}
+                            onChange={(e) => setNewMobile(e.target.value)} />
+                        <button onClick={handleAddAddress}>Add Address</button>
+                        <button onClick={togglePopup}>Cancel</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

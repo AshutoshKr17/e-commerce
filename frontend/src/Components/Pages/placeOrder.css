@@ -1,31 +1,37 @@
-.userDetails {
-    max-width: 400px;
-    margin: 0 auto;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Adjust as needed */
 }
 
-.userDetails label {
-    display: block;
-    margin-bottom: 5px;
+.content {
+    border: 2px solid #ccc;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Distance between elements */
 }
 
-.userDetails input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.userDetails button {
-    background-color: #4CAF50;
+.button {
+    border-radius: 50%;
+    width: 50px;
+    /* Adjust as needed */
+    height: 50px;
+    /* Adjust as needed */
+    background-color: #007bff;
+    /* Example color */
     color: white;
-    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.userDetails button:hover {
-    background-color: #45a049;
+.button:hover {
+    background-color: #0056b3;
+    /* Example hover color */
 }

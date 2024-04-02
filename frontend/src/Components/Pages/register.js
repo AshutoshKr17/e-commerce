@@ -16,15 +16,12 @@ export default function Register() {
             // console.log(response.data);
             if (response.data.error) {
                 toast.error(response.data.error);
-            }
-            else {
+            } else {
                 setData({});
                 toast.success('Registration Successful. Welcome!');
                 navigate('/')
             }
-            // if (response.status == 200) {
-            //     navigate('/')
-            // }
+            // if (response.status == 200) {     navigate('/') }
 
         } catch (error) {
             console.error('Error:', error.response.data);
