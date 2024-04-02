@@ -5,16 +5,12 @@ import axios from 'axios';
 
 export default function PlaceOrder() {
     const navigate = useNavigate();
-    const [addresses,
-        setAddresses] = useState([]);
-    const [showPopup,
-        setShowPopup] = useState(false);
-    const [newAddress,
-        setNewAddress] = useState('');
-    const [newMobile,
-        setNewMobile] = useState('');
-    const [error,
-        setError] = useState(null);
+    const [addresses, setAddresses] = useState([]);
+    const [selectedAddress, setSelectedAddress] = useState(null); // State to track the selected address
+    const [showPopup, setShowPopup] = useState(false);
+    const [newAddress, setNewAddress] = useState('');
+    const [newMobile, setNewMobile] = useState('');
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         // Fetch addresses when component mounts
@@ -22,6 +18,8 @@ export default function PlaceOrder() {
     }, []);
 
     const submitHandler = () => {
+        localStorage.setItem('address', selectedAddress);
+        console.log(selectedAddress);
         navigate('/payment');
     };
 
@@ -45,10 +43,8 @@ export default function PlaceOrder() {
             if (response.status >= 200 && response.status < 300) {
                 // Update UI optimistically
                 setAddresses([
-                    ...addresses, {
-                        address: newAddress,
-                        mobile: newMobile
-                    }
+                    ...addresses,
+                    { address: newAddress, mobile: newMobile }
                 ]);
                 // Clear input fields
                 setNewAddress('');
@@ -77,13 +73,22 @@ export default function PlaceOrder() {
         }
     };
 
+    const handleAddressSelection = (address) => {
+
+        setSelectedAddress(address);
+    };
+
+
     return (
         <div className="container">
             <div className="content">
                 <div>Addresses:</div>
                 <ul>
                     {addresses.map((addressObj, index) => (
-                        <li key={index}>
+                        <li
+                            key={index}
+                            className={selectedAddress === addressObj ? 'selected' : ''}
+                            onClick={() => handleAddressSelection(addressObj)}>
                             Address: {addressObj.address}, Mobile: {addressObj.mobile}
                         </li>
                     ))}

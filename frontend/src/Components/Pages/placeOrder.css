@@ -6,6 +6,11 @@
     /* Adjust as needed */
 }
 
+.selected {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
 .content {
     border: 2px solid #ccc;
     padding: 20px;
