@@ -15,7 +15,10 @@ function Home() {
         cartItems,
         removeFromCart,
         handleDecreaseQuantity,
-        handleIncreaseQuantity
+        handleIncreaseQuantity,
+        handleEmptyCart,
+        cartCount2,
+        handleQuantity
     } = useCart(); // Destructure cartCount and addToCart from useCart hook
 
     return (
@@ -25,8 +28,15 @@ function Home() {
                 cartItems={cartItems}
                 removeFromCart={removeFromCart}
                 handleDecreaseQuantity={handleDecreaseQuantity}
-                handleIncreaseQuantity={handleIncreaseQuantity} /> {/* Pass cartCount as prop */}
-            <Shop items={items} addToCart={addToCart} /> {/* Pass addToCart as prop */}
+                handleIncreaseQuantity={handleIncreaseQuantity}
+                handleEmptyCart= {handleEmptyCart}
+                cartCount2={cartCount2} /> {/* Pass cartCount as prop */}
+            <Shop items={items} addToCart={addToCart} 
+            removeFromCart={removeFromCart}
+            handleDecreaseQuantity={handleDecreaseQuantity}
+            handleIncreaseQuantity={handleIncreaseQuantity}
+            handleEmptyCart= {handleEmptyCart}
+            handleQuantity={handleQuantity}/> {/* Pass addToCart as prop */}
             <div className='header'>Trending</div>
             <FlashCard items={items}></FlashCard>
         </div>

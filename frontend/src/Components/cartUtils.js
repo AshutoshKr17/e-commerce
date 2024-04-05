@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 
 export const useCart = () => {
     const [cartItems, setCartItems] = useState([]); // State to manage cart items
-
+    const [cartCount2, setCartCount] =useState(0);
+  
     const cartCount = cartItems.length;
+    
 
     const removeFromCart = (itemId) => {
         setCartItems(cartItems => cartItems.filter(item => item.id !== itemId));
@@ -47,11 +49,23 @@ export const useCart = () => {
 
         setCartItems(updatedCartItems);
     };
+    const handleQuantity = (itemId) => {
+        // Find the item in the cart
+        const item = cartItems.find((item) => item.id === itemId);
+        // Return the item's quantity if found, otherwise return 0
+        return item ? item.quantity : 0;
+    };
 
 
+   
+    const handleEmptyCart = () =>{
+        setCartItems([]);
+    };
+   
     useEffect(() => {
-
+        setCartCount(cartItems.reduce((total, item) => total + item.quantity, 0));
     }, [cartItems]);
+
 
     return {
         cartCount,
@@ -59,6 +73,11 @@ export const useCart = () => {
         cartItems, // Expose addToCart function
         removeFromCart,
         handleDecreaseQuantity,
-        handleIncreaseQuantity
+        handleIncreaseQuantity,
+        handleEmptyCart,
+        cartCount2,
+        handleQuantity
+      
     };
+   
 };

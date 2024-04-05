@@ -5,7 +5,8 @@ import Cart from '../AddToCart/AddToCart.jsx';
 import cart_icon from '../Assets/cart_icon.png'
 import { Navigate, useNavigate } from 'react-router-dom';
 
-export const Navbar = ({ cartCount, cartItems, removeFromCart, handleDecreaseQuantity, handleIncreaseQuantity }) => {
+export const Navbar = ({ cartCount, cartItems, removeFromCart, handleDecreaseQuantity, handleIncreaseQuantity,handleEmptyCart,cartCount2 }) => {
+  
    const navigate = useNavigate();
    const [isPopupOpen,
       setIsPopupOpen] = useState(false);
@@ -55,7 +56,7 @@ export const Navbar = ({ cartCount, cartItems, removeFromCart, handleDecreaseQua
                   <button onClick={togglePopup}>
                      <img src={cart_icon} alt='cart-icon'></img>
                   </button>
-                  <span className="cart-count">{cartCount}</span>
+                  <span className="cart-count">{cartCount2}</span>
                </div>
             </div>
          </div>
@@ -65,7 +66,9 @@ export const Navbar = ({ cartCount, cartItems, removeFromCart, handleDecreaseQua
             isLoggedIn={isLoggedIn}
             removeFromCart={removeFromCart}
             handleIncreaseQuantity={handleIncreaseQuantity}
-            handleDecreaseQuantity={handleDecreaseQuantity} />}
+            handleDecreaseQuantity={handleDecreaseQuantity}
+            handleEmptyCart={handleEmptyCart} 
+            cartCount2={cartCount2}/>}
       </div>
    )
 };

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './AddToCart.css';
 import toast from 'react-hot-toast';
 
-function Cart({ onClose, cartItems, isLoggedIn, removeFromCart, handleIncreaseQuantity, handleDecreaseQuantity }) {
+function Cart({ onClose, cartItems, isLoggedIn, removeFromCart, handleIncreaseQuantity, handleDecreaseQuantity,handleEmptyCart,cartCount2 }) {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
 
@@ -27,6 +27,8 @@ function Cart({ onClose, cartItems, isLoggedIn, removeFromCart, handleIncreaseQu
       {isOpen && (
         <div className="popup">
           <h2>Shopping Cart</h2>
+          <button onClick={() => handleEmptyCart()}>Empty Cart</button>
+          <div className="popup-divider"></div>
           {cartItems.map(item => (
             <div key={item.id}>
               <p>{item.name}</p>

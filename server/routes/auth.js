@@ -8,7 +8,7 @@ const { addAddress, fetchAddress } = require('../controllers/addressController')
 
 router.use(cors({
     credentials: true,
-    origin: 'http://localhost:3000' // Allow requests from this origin
+    origin: 'https://e-commerce-25brobci1-ashutoshkr17.vercel.app/' // Allow requests from this origin
 }
 ));
 
