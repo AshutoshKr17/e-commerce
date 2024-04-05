@@ -14,6 +14,7 @@ export default function PlaceOrder() {
 
     useEffect(() => {
         // Fetch addresses when component mounts
+
         fetchAddresses();
     }, []);
 
@@ -73,6 +74,7 @@ export default function PlaceOrder() {
         }
     };
 
+
     const handleAddressSelection = (address) => {
 
         setSelectedAddress(address);
@@ -119,3 +121,4 @@ export default function PlaceOrder() {
         </div>
     );
 }
+
